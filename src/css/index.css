@@ -1,0 +1,7 @@
+h1 {
+  font-size: 50px;
+  color: red;
+  box-shadow: 1px 1px 5px #000;
+  display: flex;
+  transition: all 4s;
+}
