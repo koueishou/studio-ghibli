@@ -1,4 +1,5 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
@@ -14,21 +15,21 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.html$/i,
-        // use: [
-        //   {
-        //     loader: "file-loader",
-        //     options: {
-        //       name: "[path][name].[ext]", // [路徑][檔名].[副檔名]
-        //     },
-        //   },
-        // ],
-        type: "asset/resource",
-        generator: {
-          filename: "[path][name][ext][query]", // 輸出 HTML
-        },
-      },
+      // {
+      //   test: /\.html$/i,
+      //   // use: [
+      //   //   {
+      //   //     loader: "file-loader",
+      //   //     options: {
+      //   //       name: "[path][name].[ext]", // [路徑][檔名].[副檔名]
+      //   //     },
+      //   //   },
+      //   // ],
+      //   type: "asset/resource",
+      //   generator: {
+      //     filename: "[path][name][ext][query]", // 輸出 HTML
+      //   },
+      // },
       {
         test: /\.(png|jpe?g|gif|mp4|ogg|svg|woff|woff2|ttf|eot)$/i,
         type: "asset", // Webpack 5 不需要 url-loader
@@ -53,8 +54,15 @@ module.exports = {
       },
     ],
   },
-  // Plugins 就是拿來解決 Loaders 做不到的事情
-  plugins: [],
+  // (Plugins 就是拿來解決 Loaders 做不到的事情)
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Studio Ghibli",
+      filename: "index.html",
+      template: "html/template.html",
+      chunks: ["index"],
+    }),
+  ],
   optimization: {
     minimize: true,
     minimizer: [
