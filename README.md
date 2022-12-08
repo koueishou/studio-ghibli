@@ -13,6 +13,7 @@
   - `postcss-loader` and `autoprefixer`
   - `sass-loader` and `sass`
 - Plugins
+  - `html-webpack-plugin`
 - Optimization
   - `image-minimizer-webpack-plugin`
   - `imagemin`
@@ -25,3 +26,8 @@
 
 - `lodash`
 - `axios`
+- `react`, `react-dom`, and `@babel/preset-react`
+
+## TodoList
+
+- `eslint`

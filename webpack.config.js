@@ -1,34 +1,45 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "./src"), // 當前路徑 + 相對路徑 = 絕對路徑
   entry: {
-    index: "./js/index", // 透過 Resolve 簡化 entry
-    // about: "./js/about.js",
+    index: "./index", // 透過 Resolve 簡化 entry
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "./js/[name].js", // 會依照 entry 的 key 來更改 output 的 name
-    assetModuleFilename: "[path][hash:8][ext][query]", // 輸出圖片
+    filename: "./js/[name].[contenthash].js", // 會依照 entry 的 key 來更改 output 的 name
+    assetModuleFilename: "[path][contenthash][ext]", // 輸出圖片
+    clean: true,
+  },
+  resolve: {
+    modules: [
+      path.resolve(__dirname, "src/"),
+      path.resolve(__dirname, "node_modules/"),
+    ],
+    alias: {
+      "@": path.resolve(__dirname, "src/"),
+    },
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [
-      {
-        test: /\.html$/i,
-        // use: [
-        //   {
-        //     loader: "file-loader",
-        //     options: {
-        //       name: "[path][name].[ext]", // [路徑][檔名].[副檔名]
-        //     },
-        //   },
-        // ],
-        type: "asset/resource",
-        generator: {
-          filename: "[path][name][ext][query]", // 輸出 HTML
-        },
-      },
+      // {
+      //   test: /\.html$/i,
+      //   // use: [
+      //   //   {
+      //   //     loader: "file-loader",
+      //   //     options: {
+      //   //       name: "[path][name].[ext]", // [路徑][檔名].[副檔名]
+      //   //     },
+      //   //   },
+      //   // ],
+      //   type: "asset/resource",
+      //   generator: {
+      //     filename: "[path][name][ext][query]", // 輸出 HTML
+      //   },
+      // },
       {
         test: /\.(png|jpe?g|gif|mp4|ogg|svg|woff|woff2|ttf|eot)$/i,
         type: "asset", // Webpack 5 不需要 url-loader
@@ -42,19 +53,27 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.(js|jsx)$/,
         use: {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
           },
         },
+        exclude: /node_modules/,
+        // include: path.resolve("."),
       },
     ],
   },
-  // Plugins 就是拿來解決 Loaders 做不到的事情
-  plugins: [],
+  // (Plugins 就是拿來解決 Loaders 做不到的事情)
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Studio Ghibli",
+      filename: "index.html",
+      template: "html/template.html",
+      chunks: ["vendor", "index"], // JS 不用手動加在 HTML
+    }),
+  ],
   optimization: {
     minimize: true,
     minimizer: [
@@ -97,16 +116,17 @@ module.exports = {
         },
       }),
     ],
-  },
-  resolve: {
-    modules: [
-      path.resolve(__dirname, "src/"),
-      path.resolve(__dirname, "node_modules/"),
-    ],
-    alias: {
-      "@": path.resolve(__dirname, "src/"),
+    splitChunks: {
+      // 把 node_modules 與自己的 entry 拆開來
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          name: "vendor",
+          chunks: "initial",
+          enforce: true,
+        },
+      },
     },
-    extensions: [".js", ".jsx"],
   },
   // webpack-dev-server
   devServer: {
