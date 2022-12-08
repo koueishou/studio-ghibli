@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Header from "@/components/Header/Header";
 import FilmList from "@/components/FilmList/FilmList";
 
 const App = () => {
@@ -35,7 +34,6 @@ const App = () => {
 
   return (
     <div>
-      <Header />
       <FilmList films={films}></FilmList>
     </div>
   );

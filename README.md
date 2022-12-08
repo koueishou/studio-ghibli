@@ -26,6 +26,7 @@
 
 - `react`, `react-dom`, and `@babel/preset-react`
 - `style-components` and `babel-plugin-styled-components`
+- `react-router-dom`
 
 ## Other Packages
 
