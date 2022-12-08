@@ -61,7 +61,7 @@ module.exports = {
       title: "Studio Ghibli",
       filename: "index.html",
       template: "html/template.html",
-      chunks: ["index"], // JS 不用手動加在 HTML
+      chunks: ["vendor", "index"], // JS 不用手動加在 HTML
     }),
   ],
   optimization: {
@@ -106,6 +106,17 @@ module.exports = {
         },
       }),
     ],
+    splitChunks: {
+      // 把 node_modules 與自己的 entry 拆開來
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          name: "vendor",
+          chunks: "initial",
+          enforce: true,
+        },
+      },
+    },
   },
   resolve: {
     modules: [
