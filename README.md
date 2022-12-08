@@ -26,8 +26,8 @@
 
 - `lodash`
 - `axios`
+- `react`, `react-dom`, and `@babel/preset-react`
 
 ## TodoList
 
-- `react`
 - `eslint`
