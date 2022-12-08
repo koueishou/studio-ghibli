@@ -5,14 +5,23 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 module.exports = {
   context: path.resolve(__dirname, "./src"), // 當前路徑 + 相對路徑 = 絕對路徑
   entry: {
-    index: "./js/index", // 透過 Resolve 簡化 entry
-    // about: "./js/about.js",
+    index: "./index", // 透過 Resolve 簡化 entry
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "./js/[name].[contenthash].js", // 會依照 entry 的 key 來更改 output 的 name
     assetModuleFilename: "[path][contenthash][ext]", // 輸出圖片
     clean: true,
+  },
+  resolve: {
+    modules: [
+      path.resolve(__dirname, "src/"),
+      path.resolve(__dirname, "node_modules/"),
+    ],
+    alias: {
+      "@": path.resolve(__dirname, "src/"),
+    },
+    extensions: [".js", ".jsx"],
   },
   module: {
     rules: [
@@ -44,15 +53,15 @@ module.exports = {
         use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
       {
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         use: {
           loader: "babel-loader",
           options: {
             presets: ["@babel/preset-env"],
           },
         },
-        // exclude: /node_modules/,
-        include: path.resolve("."),
+        exclude: /node_modules/,
+        // include: path.resolve("."),
       },
     ],
   },
@@ -118,16 +127,6 @@ module.exports = {
         },
       },
     },
-  },
-  resolve: {
-    modules: [
-      path.resolve(__dirname, "src/"),
-      path.resolve(__dirname, "node_modules/"),
-    ],
-    alias: {
-      "@": path.resolve(__dirname, "src/"),
-    },
-    extensions: [".js", ".jsx"],
   },
   // webpack-dev-server
   devServer: {
