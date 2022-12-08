@@ -10,8 +10,9 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
-    filename: "./js/[name].js", // 會依照 entry 的 key 來更改 output 的 name
-    assetModuleFilename: "[path][hash:8][ext][query]", // 輸出圖片
+    filename: "./js/[name].[contenthash].js", // 會依照 entry 的 key 來更改 output 的 name
+    assetModuleFilename: "[path][contenthash][ext]", // 輸出圖片
+    clean: true,
   },
   module: {
     rules: [
@@ -60,7 +61,7 @@ module.exports = {
       title: "Studio Ghibli",
       filename: "index.html",
       template: "html/template.html",
-      chunks: ["index"],
+      chunks: ["index"], // JS 不用手動加在 HTML
     }),
   ],
   optimization: {
