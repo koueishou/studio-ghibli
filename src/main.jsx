@@ -4,20 +4,36 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Contact from "@/routes/Contact";
+import Contact, { loader as contactLoader } from "@/routes/Contact";
+import EditContact, {
+  action as editAction,
+  loader as editLoader,
+} from "@/routes/Edit";
 import ErrorPage from "@/routes/ErrorPage";
 import Films from "@/routes/Films";
-import Root from "@/routes/Root";
+import Root, {
+  action as rootAction,
+  loader as rootLoader,
+} from "@/routes/Root";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
+    loader: rootLoader,
+    action: rootAction,
     children: [
       {
         path: "contacts/:contactId",
         element: <Contact />,
+        loader: contactLoader,
+      },
+      {
+        path: "contacts/:contactId/edit",
+        element: <EditContact />,
+        loader: editLoader,
+        action: editAction,
       },
       {
         path: "films",

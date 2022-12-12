@@ -27,6 +27,7 @@
 - `react`, `react-dom`, and `@babel/preset-react`
 - `style-components` and `babel-plugin-styled-components`
 - `react-router-dom`
+  - `localforage`, `match-sorter`, and `sort-by` for React Router v6.4.5 Tutorial
 - `prop-types`
 
 ## Linter and Formatter
