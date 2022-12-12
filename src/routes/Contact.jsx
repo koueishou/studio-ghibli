@@ -1,13 +1,15 @@
+import PropTypes from "prop-types";
 import React from "react";
 import { Form } from "react-router-dom";
 
 const Favorite = ({ contact }) => {
   // yes, this is a `let` for later
-  let favorite = contact.favorite;
+  const { favorite } = contact;
 
   return (
     <Form method="post">
       <button
+        type="button"
         name="favorite"
         value={favorite ? "false" : "true"}
         aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
@@ -31,24 +33,31 @@ const Contact = () => {
   return (
     <div id="contact">
       <div>
-        <img key={contact.avatar} src={contact.avatar || null} />
+        <img key={contact.avatar} src={contact.avatar || null} alt="" />
       </div>
 
       <div>
         <h1>
           {contact.first || contact.last ? (
             <>
-              {contact.first} {contact.last}
+              {contact.first}
+              {" "}
+              {contact.last}
             </>
           ) : (
             <i>No Name</i>
-          )}{" "}
+          )}
+          {" "}
           <Favorite contact={contact} />
         </h1>
 
         {contact.twitter && (
           <p>
-            <a target="_blank" href={`https://twitter.com/${contact.twitter}`}>
+            <a
+              target="_blank"
+              href={`https://twitter.com/${contact.twitter}`}
+              rel="noreferrer"
+            >
               {contact.twitter}
             </a>
           </p>
@@ -64,7 +73,11 @@ const Contact = () => {
             method="post"
             action="destroy"
             onSubmit={(event) => {
-              if (!confirm("Please confirm you want to delete this record.")) {
+              if (
+                !window.confirm(
+                  "Please confirm you want to delete this record.",
+                )
+              ) {
                 event.preventDefault();
               }
             }}
@@ -75,6 +88,15 @@ const Contact = () => {
       </div>
     </div>
   );
+};
+
+Favorite.propTypes = {
+  contact: PropTypes.shape({
+    favorite: PropTypes.string,
+  }),
+};
+Favorite.defaultProps = {
+  contact: {},
 };
 
 export default Contact;

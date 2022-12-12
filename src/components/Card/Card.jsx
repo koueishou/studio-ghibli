@@ -1,7 +1,11 @@
+import PropTypes from "prop-types";
 import React from "react";
+
 import * as Style from "./style";
 
 const Card = ({ film }) => {
+  console.log(film);
+
   return (
     <Style.Card>
       <Style.Image src={film.image} alt="Avatar" />
@@ -13,6 +17,17 @@ const Card = ({ film }) => {
       </Style.Container>
     </Style.Card>
   );
+};
+
+Card.propTypes = {
+  film: PropTypes.shape({
+    image: PropTypes.string,
+    title: PropTypes.string,
+    description: PropTypes.string,
+  }),
+};
+Card.defaultProps = {
+  film: {},
 };
 
 export default Card;

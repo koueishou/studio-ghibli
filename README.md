@@ -1,4 +1,4 @@
-# Studio Ghibli
+# 🌰 Studio Ghibli
 
 ## Webpack
 
@@ -27,19 +27,26 @@
 - `react`, `react-dom`, and `@babel/preset-react`
 - `style-components` and `babel-plugin-styled-components`
 - `react-router-dom`
+- `prop-types`
+
+## Linter and Formatter
+
+- `eslint`
+- `eslint-config-airbnb`
+- `eslint-plugin-import`
+- `eslint-plugin-jsx-a11y`
+- `eslint-plugin-react`
+- `eslint-plugin-react-hooks`
+- `eslint-plugin-simple-import-sort`
 
 ## Other Packages
 
 - `lodash`
 - `axios`
 
-## TodoList
-
-- `eslint`
-
 ## API
 
-API made by [janaipakos](https://github.com/janaipakos/ghibliapi), see api docs [here](https://ghibliapi.herokuapp.com/)
+Films data is cloned from [janaipakos](https://github.com/janaipakos/ghibliapi), see api docs [here](https://ghibliapi.herokuapp.com/)
 
 ## Disclaimer
 
