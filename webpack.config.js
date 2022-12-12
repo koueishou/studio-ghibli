@@ -5,9 +5,10 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 module.exports = {
   context: path.resolve(__dirname, "./src"), // 當前路徑 + 相對路徑 = 絕對路徑
   entry: {
-    index: "./index", // 透過 Resolve 簡化 entry
+    index: "./main", // 透過 Resolve 簡化 entry
   },
   output: {
+    publicPath: "/",
     path: path.resolve(__dirname, "./dist"),
     filename: "./js/[name].[contenthash].js", // 會依照 entry 的 key 來更改 output 的 name
     assetModuleFilename: "[path][contenthash][ext]", // 輸出圖片
@@ -70,7 +71,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Studio Ghibli",
       filename: "index.html",
-      template: "html/template.html",
+      template: "./index.html",
       chunks: ["vendor", "index"], // JS 不用手動加在 HTML
     }),
   ],
