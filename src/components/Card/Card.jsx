@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useEffect } from "react";
 
 import * as Style from "./style";
 
 const Card = ({ film }) => {
-  console.log(film);
+  useEffect(() => {}, []);
 
   return (
     <Style.Card>

@@ -1,34 +1,57 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Form } from "react-router-dom";
+import { Form, useFetcher, useLoaderData } from "react-router-dom";
+
+import { getContact, updateContact } from "@/utils/contacts";
+
+export async function loader({ params }) {
+  const contact = await getContact(params.contactId);
+  // Throw a 404 response in the loader
+  if (!contact) {
+    throw new Response("", {
+      status: 404,
+      statusText: "Not Found",
+    });
+  }
+  return contact;
+}
+
+export async function action({ request, params }) {
+  const formData = await request.formData();
+  return updateContact(params.contactId, {
+    favorite: formData.get("favorite") === "true" ? "true" : "false",
+  });
+}
 
 const Favorite = ({ contact }) => {
-  // yes, this is a `let` for later
-  const { favorite } = contact;
+  const fetcher = useFetcher();
+
+  let { favorite } = contact;
+  // Optimistic UI:
+  // If the fetcher has any formData being submitted, the star change to the new state immediately.
+  // When the action is done, we're back to using the actual data.
+  if (fetcher.formData) {
+    favorite = fetcher.formData.get("favorite") === "true" ? "true" : "false";
+  }
 
   return (
-    <Form method="post">
+    <fetcher.Form method="post">
       <button
-        type="button"
+        type="submit"
         name="favorite"
-        value={favorite ? "false" : "true"}
-        aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+        value={favorite === "true" ? "false" : "true"}
+        aria-label={
+          favorite === "true" ? "Remove from favorites" : "Add to favorites"
+        }
       >
-        {favorite ? "★" : "☆"}
+        {favorite === "true" ? "★" : "☆"}
       </button>
-    </Form>
+    </fetcher.Form>
   );
 };
 
 const Contact = () => {
-  const contact = {
-    first: "Your",
-    last: "Name",
-    avatar: "https://placekitten.com/g/200/200",
-    twitter: "your_handle",
-    notes: "Some notes",
-    favorite: true,
-  };
+  const contact = useLoaderData();
 
   return (
     <div id="contact">
