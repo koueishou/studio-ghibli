@@ -12,6 +12,7 @@ import EditContact, {
 } from "@/routes/Edit";
 import ErrorPage from "@/routes/ErrorPage";
 import Films from "@/routes/Films";
+import Index from "@/routes/Index";
 import Root, {
   action as rootAction,
   loader as rootLoader,
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     loader: rootLoader,
     action: rootAction,
     children: [
+      {
+        index: true,
+        element: <Index />,
+      },
       {
         path: "contacts/:contactId",
         element: <Contact />,
