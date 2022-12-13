@@ -16,8 +16,15 @@ export async function action({ request, params }) {
 }
 
 const Favorite = ({ contact }) => {
-  const { favorite } = contact;
   const fetcher = useFetcher();
+
+  let { favorite } = contact;
+  // Optimistic UI:
+  // If the fetcher has any formData being submitted, the star change to the new state immediately.
+  // When the action is done, we're back to using the actual data.
+  if (fetcher.formData) {
+    favorite = fetcher.formData.get("favorite") === "true";
+  }
 
   return (
     <fetcher.Form method="post">
