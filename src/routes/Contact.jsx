@@ -19,7 +19,7 @@ export async function loader({ params }) {
 export async function action({ request, params }) {
   const formData = await request.formData();
   return updateContact(params.contactId, {
-    favorite: formData.get("favorite") === "true",
+    favorite: formData.get("favorite") === "true" ? "true" : "false",
   });
 }
 
@@ -31,7 +31,7 @@ const Favorite = ({ contact }) => {
   // If the fetcher has any formData being submitted, the star change to the new state immediately.
   // When the action is done, we're back to using the actual data.
   if (fetcher.formData) {
-    favorite = fetcher.formData.get("favorite") === "true";
+    favorite = fetcher.formData.get("favorite") === "true" ? "true" : "false";
   }
 
   return (
@@ -39,10 +39,12 @@ const Favorite = ({ contact }) => {
       <button
         type="submit"
         name="favorite"
-        value={favorite ? "false" : "true"}
-        aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
+        value={favorite === "true" ? "false" : "true"}
+        aria-label={
+          favorite === "true" ? "Remove from favorites" : "Add to favorites"
+        }
       >
-        {favorite ? "★" : "☆"}
+        {favorite === "true" ? "★" : "☆"}
       </button>
     </fetcher.Form>
   );

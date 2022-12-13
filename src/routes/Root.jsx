@@ -101,7 +101,7 @@ const Root = () => {
                       <i>No Name</i>
                     )}
                     {" "}
-                    {contact.favorite && <span>★</span>}
+                    {contact.favorite === "true" && <span>★</span>}
                   </NavLink>
                 </li>
               ))}
