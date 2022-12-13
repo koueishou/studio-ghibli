@@ -1,19 +1,26 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { Form, useLoaderData } from "react-router-dom";
+import { Form, useFetcher, useLoaderData } from "react-router-dom";
 
-import { getContact } from "@/utils/contacts";
+import { getContact, updateContact } from "@/utils/contacts";
 
 export async function loader({ params }) {
   return getContact(params.contactId);
 }
 
+export async function action({ request, params }) {
+  const formData = await request.formData();
+  return updateContact(params.contactId, {
+    favorite: formData.get("favorite") === "true",
+  });
+}
+
 const Favorite = ({ contact }) => {
-  // yes, this is a `let` for later
   const { favorite } = contact;
+  const fetcher = useFetcher();
 
   return (
-    <Form method="post">
+    <fetcher.Form method="post">
       <button
         type="button"
         name="favorite"
@@ -22,7 +29,7 @@ const Favorite = ({ contact }) => {
       >
         {favorite ? "★" : "☆"}
       </button>
-    </Form>
+    </fetcher.Form>
   );
 };
 
