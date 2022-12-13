@@ -4,22 +4,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import Contact, {
-  action as contactAction,
-  loader as contactLoader,
-} from "@/routes/Contact";
-import Destroy, { action as deleteAction } from "@/routes/Destroy";
-import EditContact, {
-  action as editAction,
-  loader as editLoader,
-} from "@/routes/Edit";
 import ErrorPage from "@/routes/ErrorPage";
+import Film, {
+  action as filmAction,
+  loader as filmLoader,
+} from "@/routes/Film";
 import Films from "@/routes/Films";
 import Index from "@/routes/Index";
-import Root, {
-  action as rootAction,
-  loader as rootLoader,
-} from "@/routes/Root";
+import Root, { loader as rootLoader } from "@/routes/Root";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +19,6 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     loader: rootLoader,
-    action: rootAction,
     children: [
       {
         // Pathless Routes
@@ -38,26 +29,14 @@ const router = createBrowserRouter([
             element: <Index />,
           },
           {
-            path: "contacts/:contactId",
-            element: <Contact />,
-            loader: contactLoader,
-            action: contactAction,
-          },
-          {
-            path: "contacts/:contactId/edit",
-            element: <EditContact />,
-            loader: editLoader,
-            action: editAction,
-          },
-          {
-            path: "contacts/:contactId/destroy",
-            element: <Destroy />,
-            errorElement: <div>Oops! There was an error.</div>,
-            action: deleteAction,
-          },
-          {
             path: "films",
             element: <Films />,
+          },
+          {
+            path: "films/:filmId",
+            element: <Film />,
+            loader: filmLoader,
+            action: filmAction,
           },
         ],
       },
