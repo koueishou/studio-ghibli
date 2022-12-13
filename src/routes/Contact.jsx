@@ -22,7 +22,7 @@ const Favorite = ({ contact }) => {
   return (
     <fetcher.Form method="post">
       <button
-        type="button"
+        type="submit"
         name="favorite"
         value={favorite ? "false" : "true"}
         aria-label={favorite ? "Remove from favorites" : "Add to favorites"}
