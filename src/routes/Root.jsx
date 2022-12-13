@@ -3,29 +3,23 @@ import {
   Form,
   NavLink,
   Outlet,
-  redirect,
   useLoaderData,
   useNavigation,
   useSubmit,
 } from "react-router-dom";
 
-import { createContact, getContacts } from "@/utils/contacts";
+import { getFilms } from "@/utils/films";
 
 // Here are standard web objects: Request, URL, URLSearchParams.
 export async function loader({ request }) {
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
-  const contacts = await getContacts(q);
-  return { contacts, q };
-}
-
-export async function action() {
-  const contact = await createContact();
-  return redirect(`/contacts/${contact.id}/edit`);
+  const films = await getFilms(q);
+  return { films, q };
 }
 
 const Root = () => {
-  const { contacts, q } = useLoaderData();
+  const { films, q } = useLoaderData();
   const navigation = useNavigation();
   const submit = useSubmit();
 
@@ -52,13 +46,13 @@ const Root = () => {
   return (
     <>
       <div id="sidebar">
-        <h1>React Router Contacts</h1>
+        <h1>Studio Ghibli Films</h1>
         <div>
           <Form id="search-form" role="search">
             <input
               id="q"
               className={searching ? "loading" : ""}
-              aria-label="Search contacts"
+              aria-label="Search films"
               placeholder="Search"
               type="search"
               name="q"
@@ -78,42 +72,28 @@ const Root = () => {
             <div id="search-spinner" aria-hidden hidden={!searching} />
             <div className="sr-only" aria-live="polite" />
           </Form>
-          <Form method="post">
-            <button type="submit">New</button>
-          </Form>
         </div>
         <nav>
-          {contacts.length ? (
+          {films.length ? (
             <ul>
-              {contacts.map((contact) => (
-                <li key={contact.id}>
-                  <NavLink
-                    to={`contacts/${contact.id}`}
-                    className={getNavLinkClass}
-                  >
-                    {contact.first || contact.last ? (
-                      <>
-                        {contact.first}
-                        {" "}
-                        {contact.last}
-                      </>
-                    ) : (
-                      <i>No Name</i>
-                    )}
+              <li>
+                <NavLink to="films" className={getNavLinkClass} end>
+                  All Films
+                </NavLink>
+              </li>
+              {films.map((film) => (
+                <li key={film.id}>
+                  <NavLink to={`films/${film.id}`} className={getNavLinkClass}>
+                    {film.title}
                     {" "}
-                    {contact.favorite === "true" && <span>★</span>}
+                    {film.favorite === "true" && <span>★</span>}
                   </NavLink>
                 </li>
               ))}
-              <li>
-                <NavLink to="films" className={getNavLinkClass}>
-                  Ghibli Films
-                </NavLink>
-              </li>
             </ul>
           ) : (
             <p>
-              <i>No contacts</i>
+              <i>No films</i>
             </p>
           )}
         </nav>
