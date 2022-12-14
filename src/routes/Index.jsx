@@ -2,11 +2,13 @@ import React from "react";
 
 const Index = () => (
   <p id="zero-state">
-    This is a demo for React Router.
+    This is a fans project for Studio Ghibli.
     <br />
     Check out
     {" "}
-    <a href="https://reactrouter.com">the docs at reactrouter.com</a>
+    <a href="https://github.com/sealman234/studio-ghibli">
+      the repo at github.com
+    </a>
     .
   </p>
 );
