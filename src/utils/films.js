@@ -11,6 +11,7 @@ const apiGetFilms = async () => {
       id: film.id,
       title: film.title,
       original_title: film.original_title,
+      original_title_romanized: film.original_title_romanized,
       image: film.image,
       movie_banner: film.movie_banner,
       description: film.description,

@@ -9,7 +9,7 @@ import Film, {
   action as filmAction,
   loader as filmLoader,
 } from "@/routes/Film";
-import Films from "@/routes/Films";
+import Films, { loader as filmsLoader } from "@/routes/Films/Films";
 import Index from "@/routes/Index";
 import Root, { loader as rootLoader } from "@/routes/Root";
 
@@ -31,6 +31,7 @@ const router = createBrowserRouter([
           {
             path: "films",
             element: <Films />,
+            loader: filmsLoader,
           },
           {
             path: "films/:filmId",
