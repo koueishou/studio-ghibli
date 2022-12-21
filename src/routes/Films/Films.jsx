@@ -1,7 +1,7 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 
-import Card from "@/components/Card/Card";
+import FilmCard from "@/components/FilmCard/FilmCard";
 import { getFilms } from "@/utils/films";
 
 import * as Style from "./style";
@@ -17,7 +17,7 @@ const Films = () => {
   return (
     <Style.Container>
       {(films || []).map((film) => (
-        <Card key={film.id} film={film} />
+        <FilmCard key={film.id} film={film} />
       ))}
     </Style.Container>
   );
