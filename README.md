@@ -58,3 +58,4 @@ There is no purpose from Author to harm anyone.
 ## Credit
 
 - [Janaipakos](https://github.com/janaipakos/ghibliapi) for awesome API
+- Acorn icons created by Freepik - [Flaticon](https://www.flaticon.com/free-icons/acorn)
