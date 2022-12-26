@@ -8,7 +8,7 @@ import ErrorPage from "@/routes/ErrorPage";
 import Film, {
   action as filmAction,
   loader as filmLoader,
-} from "@/routes/Film";
+} from "@/routes/Film/Film";
 import Films, { loader as filmsLoader } from "@/routes/Films/Films";
 import Index from "@/routes/Index";
 import Root, { loader as rootLoader } from "@/routes/Root";

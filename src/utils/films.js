@@ -19,6 +19,7 @@ const apiGetFilms = async () => {
       producer: film.producer,
       release_date: film.release_date,
       running_time: film.running_time,
+      rt_score: film.rt_score,
     }));
     return films;
   } catch (error) {

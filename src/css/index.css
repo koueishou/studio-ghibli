@@ -12,9 +12,9 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -58,35 +58,6 @@ button:hover {
 button:active {
   box-shadow: 0 0px 1px hsla(0, 0%, 0%, 0.4);
   transform: translateY(1px);
-}
-
-#film h1 {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-#film h1 form {
-  display: flex;
-  align-items: center;
-  margin-top: 0.25rem;
-}
-#film h1 form button {
-  box-shadow: none;
-  font-size: 1.5rem;
-  font-weight: 400;
-  padding: 0;
-  cursor: pointer;
-}
-#film h1 form button[value="true"] {
-  color: #a4a4a4;
-}
-#film h1 form button[value="true"]:hover,
-#film h1 form button[value="false"] {
-  color: #eeb004;
-}
-
-form[action$="destroy"] button {
-  color: #f44250;
 }
 
 .sr-only {
@@ -258,56 +229,6 @@ i {
   opacity: 0.25;
   transition: opacity 200ms;
   transition-delay: 200ms;
-}
-
-#film {
-  max-width: 40rem;
-  display: flex;
-}
-
-#film h1 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 0;
-  line-height: 1.2;
-}
-
-#film h1 + p {
-  margin: 0;
-}
-
-#film h1 + p + p {
-  white-space: break-spaces;
-}
-
-#film h1:focus {
-  outline: none;
-  color: hsl(224, 98%, 58%);
-}
-
-#film a[href*="twitter"] {
-  display: flex;
-  font-size: 1.5rem;
-  color: #3992ff;
-  text-decoration: none;
-}
-#film a[href*="twitter"]:hover {
-  text-decoration: underline;
-}
-
-#film img {
-  width: 12rem;
-  height: 12rem;
-  background: #c8c8c8;
-  margin-right: 2rem;
-  border-radius: 1.5rem;
-  object-fit: cover;
-}
-
-#film h1 ~ div {
-  display: flex;
-  gap: 0.5rem;
-  margin: 1rem 0;
 }
 
 #zero-state {
