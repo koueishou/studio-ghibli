@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.4rem 0.8rem 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   &:hover {
-    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.8rem 1.6rem 0 rgba(0, 0, 0, 0.2);
   }
   cursor: pointer;
 `;
@@ -18,9 +18,9 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
+  gap: 0.8rem;
   width: 100%;
-  padding: 0px 16px;
+  padding: 0px 1.6rem;
 `;
 
 export const Title = styled.h4`

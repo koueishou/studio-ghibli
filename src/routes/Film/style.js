@@ -15,11 +15,11 @@ export const Column = styled.div`
 `;
 
 export const FilmContainer = styled.div`
-  max-width: 40rem;
+  max-width: 64rem;
 
   & a[href*="twitter"] {
     display: flex;
-    font-size: 1.5rem;
+    font-size: 2.4rem;
     color: #3992ff;
     text-decoration: none;
   }
@@ -31,19 +31,19 @@ export const FilmContainer = styled.div`
 export const FilmBanner = styled.img`
   display: block;
   width: 100%;
-  border-radius: 1.5rem;
+  border-radius: 2.4rem;
   object-fit: cover;
-  box-shadow: 0px 0px 3px 5px #f2e1f2;
+  box-shadow: 0px 0px 0.3rem 0.5rem #f2e1f2;
 `;
 
 export const FavoriteForm = styled.div`
   & form {
     display: flex;
     align-items: center;
-    margin-top: 0.25rem;
+    margin-top: 0.4rem;
     & button {
       box-shadow: none;
-      font-size: 1.5rem;
+      font-size: 2.4rem;
       font-weight: 400;
       padding: 0;
       cursor: pointer;
@@ -61,10 +61,10 @@ export const FavoriteForm = styled.div`
 export const Title = styled.h1`
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: 1.6rem;
   text-align: center;
 
-  font-size: 2rem;
+  font-size: 3.2rem;
   font-weight: 700;
   line-height: 1.2;
   & + p {
@@ -79,8 +79,8 @@ export const Title = styled.h1`
   }
   & ~ div {
     display: flex;
-    gap: 0.5rem;
-    margin: 1rem 0;
+    gap: 0.8rem;
+    margin: 1.6rem 0;
   }
 `;
 
@@ -90,9 +90,9 @@ export const Score = styled.div`
   align-items: center;
   background: orange;
   color: #fff;
-  width: 24px;
-  height: 24px;
-  box-shadow: 0px 0px 3px 5px orange;
+  width: 2.4rem;
+  height: 2.4rem;
+  box-shadow: 0px 0px 0.3rem 0.5rem orange;
 `;
 
 export const Description = styled.p`

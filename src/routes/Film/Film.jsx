@@ -64,14 +64,14 @@ const Film = () => {
       <Style.FilmBanner src={film.movie_banner} alt="film banner" />
       <Style.Row style={{ justifyContent: "space-between" }}>
         <Style.Column style={{ width: "100%" }}>
-          <Style.Row style={{ gap: "8px" }}>
+          <Style.Row style={{ gap: "0.8rem" }}>
             <Favorite film={film} />
             <Style.Title>{film.title}</Style.Title>
           </Style.Row>
           <Style.Row
             style={{
               width: "100%",
-              gap: "32px",
+              gap: "3.2rem",
             }}
           >
             <p>{film.release_date}</p>
