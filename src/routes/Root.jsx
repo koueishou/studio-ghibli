@@ -12,6 +12,7 @@ import { getFilms } from "@/utils/films";
 
 // Here are standard web objects: Request, URL, URLSearchParams.
 export async function loader({ request }) {
+  if (!request) return {};
   const url = new URL(request.url);
   const q = url.searchParams.get("q");
   const films = await getFilms(q);
@@ -19,14 +20,18 @@ export async function loader({ request }) {
 }
 
 const Root = () => {
-  const { films, q } = useLoaderData();
+  let films;
+  let q;
+  const loaderData = useLoaderData();
+  if (loaderData?.films) films = loaderData.films;
+  if (loaderData?.q) q = loaderData.q;
   const navigation = useNavigation();
   const submit = useSubmit();
 
   // The `navigation.location` will show up
   // when the app is navigating to a new URL and loading the data for it.
   // Therefore, the spinner will go away when there is no pending navigation anymore.
-  const searching = navigation.location
+  const searching = navigation?.location
     && new URLSearchParams(navigation.location.search).has("q");
 
   const getNavLinkClass = ({ isActive, isPending }) => {
@@ -74,7 +79,7 @@ const Root = () => {
           </Form>
         </div>
         <nav>
-          {films.length ? (
+          {films && films.length ? (
             <ul>
               <li>
                 <NavLink to="films" className={getNavLinkClass} end>
@@ -100,7 +105,7 @@ const Root = () => {
       </div>
       <div
         id="detail"
-        className={navigation.state === "loading" ? "loading" : ""}
+        className={navigation?.state === "loading" ? "loading" : ""}
       >
         <Outlet />
       </div>

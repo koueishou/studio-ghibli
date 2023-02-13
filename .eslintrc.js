@@ -4,6 +4,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    "jest/globals": true,
   },
   extends: ["plugin:react/recommended", "airbnb"],
   overrides: [],
@@ -11,7 +12,7 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
   },
-  plugins: ["react", "simple-import-sort"],
+  plugins: ["react", "jest", "simple-import-sort"],
   rules: {
     // airbnb
     quotes: ["error", "double"],
@@ -23,6 +24,12 @@ module.exports = {
       2,
       { namedComponents: "arrow-function" },
     ],
+    // jest
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
     // simple-import-sort
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
