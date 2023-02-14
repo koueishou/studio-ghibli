@@ -1,6 +1,5 @@
 module.exports = {
   collectCoverage: true,
-  coverageDirectory: "<rootDir>/coverage",
   collectCoverageFrom: [
     "src/components/**/*.{js,jsx}",
     "src/routes/**/*.{js,jsx}",
