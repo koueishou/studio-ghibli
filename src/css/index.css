@@ -107,7 +107,7 @@ button:active {
 #sidebar h1::before {
   content: "";
   display: inline-block;
-  background-image: url("@/images/Studio_Ghibli_old.webp");
+  background-image: url("@/assets/images/Studio_Ghibli_old.webp");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -249,7 +249,7 @@ i {
 #zero-state:before {
   content: "";
   display: block;
-  background-image: url("@/images/Studio_Ghibli.svg");
+  background-image: url("@/assets/images/Studio_Ghibli.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center center;

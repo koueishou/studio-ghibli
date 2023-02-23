@@ -12,9 +12,7 @@ export const loader = async () => {
 };
 
 const Films = () => {
-  let films = [];
-  const data = useLoaderData();
-  if (data?.films) films = data.films;
+  const { films } = useLoaderData();
 
   return (
     <Style.Container>

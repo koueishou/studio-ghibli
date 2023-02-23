@@ -4,14 +4,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import ErrorPage from "@/routes/ErrorPage";
+import ErrorPage from "@/routes/ErrorPage/ErrorPage";
 import Film, {
   action as filmAction,
   loader as filmLoader,
 } from "@/routes/Film/Film";
 import Films, { loader as filmsLoader } from "@/routes/Films/Films";
-import Index from "@/routes/Index";
-import Root, { loader as rootLoader } from "@/routes/Root";
+import HomePage from "@/routes/HomePage/HomePage";
+import Root, { loader as rootLoader } from "@/routes/Root/Root";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +26,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Index />,
+            element: <HomePage />,
           },
           {
             path: "films",

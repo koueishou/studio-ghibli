@@ -7,7 +7,7 @@ import { getFilm, updateFilm } from "@/utils/films";
 import * as Style from "./style";
 
 export async function loader({ params }) {
-  const film = await getFilm(params?.filmId);
+  const film = await getFilm(params.filmId);
   // Throw a 404 response in the loader
   if (!film) {
     throw new Response("", {
@@ -19,7 +19,6 @@ export async function loader({ params }) {
 }
 
 export async function action({ request, params }) {
-  if (!request) return 0;
   const formData = await request.formData();
   return updateFilm(params.filmId, {
     favorite: formData.get("favorite") === "true" ? "true" : "false",
@@ -57,19 +56,17 @@ const Favorite = ({ film }) => {
 
 const Film = () => {
   const film = useLoaderData();
-  let minutes = 0;
-  let hours = 0;
-  if (film?.minutes) minutes = film.running_time % 60;
-  if (film?.hours) hours = Math.floor(film.running_time / 60);
+  const minutes = film.running_time % 60;
+  const hours = Math.floor(film.running_time / 60);
 
   return (
     <Style.FilmContainer>
-      <Style.FilmBanner src={film?.movie_banner} alt="film banner" />
+      <Style.FilmBanner src={film.movie_banner} alt="film banner" />
       <Style.Row style={{ justifyContent: "space-between" }}>
         <Style.Column style={{ width: "100%" }}>
           <Style.Row style={{ gap: "0.8rem" }}>
             <Favorite film={film} />
-            <Style.Title>{film?.title}</Style.Title>
+            <Style.Title>{film.title}</Style.Title>
           </Style.Row>
           <Style.Row
             style={{
@@ -77,8 +74,8 @@ const Film = () => {
               gap: "3.2rem",
             }}
           >
-            <p>{film?.release_date}</p>
-            <Style.Score>{film?.rt_score}</Style.Score>
+            <p>{film.release_date}</p>
+            <Style.Score>{film.rt_score}</Style.Score>
             <p>{`${hours}h ${minutes}min`}</p>
           </Style.Row>
         </Style.Column>
@@ -86,16 +83,16 @@ const Film = () => {
           <p style={{ whiteSpace: "nowrap" }}>
             <span style={{ color: "#87CEEB" }}>Director:</span>
             {" "}
-            {film?.director}
+            {film.director}
           </p>
           <p style={{ whiteSpace: "nowrap" }}>
             <span style={{ color: "#87CEEB" }}>Producer:</span>
             {" "}
-            {film?.producer}
+            {film.producer}
           </p>
         </Style.Column>
       </Style.Row>
-      <Style.Description>{film?.description}</Style.Description>
+      <Style.Description>{film.description}</Style.Description>
     </Style.FilmContainer>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Index = () => (
+const HomePage = () => (
   <p id="zero-state">
     This is a fans project for Studio Ghibli.
     <br />
@@ -13,4 +13,4 @@ const Index = () => (
   </p>
 );
 
-export default Index;
+export default HomePage;

@@ -66,14 +66,14 @@ export async function getFilms(query) {
 export async function getFilm(id) {
   await fakeNetwork(`film:${id}`);
   const films = await localforage.getItem("films");
-  const film = films?.find((item) => item.id === id);
+  const film = films.find((item) => item.id === id);
   return film ?? null;
 }
 
 export async function updateFilm(id, updates) {
   await fakeNetwork();
   const films = await localforage.getItem("films");
-  const film = films?.find((item) => item.id === id);
+  const film = films.find((item) => item.id === id);
   if (!film) throw new Error("No film found for", id);
   Object.assign(film, updates);
   await set(films);
