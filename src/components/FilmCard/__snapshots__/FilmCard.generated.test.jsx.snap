@@ -1,5 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<FilmCard> should render component 1`] = `null`;
-
-exports[`<FilmCard> should render component with props 1`] = `null`;
