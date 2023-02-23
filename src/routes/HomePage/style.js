@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import StudioGhibli from "../../assets/images/Studio_Ghibli.svg";
+
 export const ZeroState = styled.p`
   margin: 32px auto;
   text-align: center;
@@ -16,7 +18,7 @@ export const ZeroState = styled.p`
   &:before {
     content: "";
     display: block;
-    background-image: url("@/src/assets/assets/images/Studio_Ghibli.svg");
+    background-image: url(${StudioGhibli});
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center center;

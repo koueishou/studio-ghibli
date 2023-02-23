@@ -1,5 +1,7 @@
 import styled, { keyframes } from "styled-components";
 
+import StudioGhibliOld from "../../assets/images/Studio_Ghibli_old.webp";
+
 const spinAnimation = keyframes`
   from {
     transform: rotate(0deg);
@@ -36,7 +38,7 @@ export const Sidebar = styled.div`
   & h1::before {
     content: "";
     display: inline-block;
-    background-image: url(@/assets/images/Studio_Ghibli_old.webp);
+    background-image: url(${StudioGhibliOld});
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;

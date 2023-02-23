@@ -28,8 +28,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(png|jpe?g|gif|mp4|ogg|svg|woff|woff2|ttf|eot)$/i,
-        type: "asset/resource", // Webpack 5 不需要 url-loader
+        test: /\.(png|jpe?g|gif|mp4|ogg|svg|webp|woff|woff2|ttf|eot)$/i,
+        type: "asset", // Webpack 5 不需要 url-loader
       },
       {
         test: /\.css$/i,
