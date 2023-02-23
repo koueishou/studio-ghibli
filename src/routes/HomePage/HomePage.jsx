@@ -1,7 +1,9 @@
 import React from "react";
 
+import * as Style from "./style";
+
 const HomePage = () => (
-  <p id="zero-state">
+  <Style.ZeroState>
     This is a fans project for Studio Ghibli.
     <br />
     Check out
@@ -10,7 +12,7 @@ const HomePage = () => (
       the repo at github.com
     </a>
     .
-  </p>
+  </Style.ZeroState>
 );
 
 export default HomePage;

@@ -4,6 +4,7 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "./src"), // 當前路徑 + 相對路徑 = 絕對路徑
+
   entry: {
     index: "./main", // 透過 Resolve 簡化 entry
   },
@@ -26,24 +27,9 @@ module.exports = {
   },
   module: {
     rules: [
-      // {
-      //   test: /\.html$/i,
-      //   // use: [
-      //   //   {
-      //   //     loader: "file-loader",
-      //   //     options: {
-      //   //       name: "[path][name].[ext]", // [路徑][檔名].[副檔名]
-      //   //     },
-      //   //   },
-      //   // ],
-      //   type: "asset/resource",
-      //   generator: {
-      //     filename: "[path][name][ext][query]", // 輸出 HTML
-      //   },
-      // },
       {
         test: /\.(png|jpe?g|gif|mp4|ogg|svg|woff|woff2|ttf|eot)$/i,
-        type: "asset", // Webpack 5 不需要 url-loader
+        type: "asset/resource", // Webpack 5 不需要 url-loader
       },
       {
         test: /\.css$/i,
@@ -66,7 +52,7 @@ module.exports = {
       },
     ],
   },
-  // (Plugins 就是拿來解決 Loaders 做不到的事情)
+  // 解決 Loaders 做不到的事情
   plugins: [
     new HtmlWebpackPlugin({
       title: "Studio Ghibli",

@@ -10,6 +10,8 @@ import {
 
 import { getFilms } from "@/utils/films";
 
+import * as Style from "./style";
+
 // Here are standard web objects: Request, URL, URLSearchParams.
 export async function loader({ request }) {
   const url = new URL(request.url);
@@ -45,11 +47,11 @@ const Root = () => {
 
   return (
     <>
-      <div id="sidebar">
+      <Style.Sidebar>
         <h1>Studio Ghibli Films</h1>
         <div>
           <Form id="search-form" role="search">
-            <input
+            <Style.Input
               id="q"
               className={searching ? "loading" : ""}
               aria-label="Search films"
@@ -69,8 +71,8 @@ const Root = () => {
                 });
               }}
             />
-            <div id="search-spinner" aria-hidden hidden={!searching} />
-            <div className="sr-only" aria-live="polite" />
+            <Style.SearchSpinner aria-hidden hidden={!searching} />
+            <Style.SrOnly aria-live="polite" />
           </Form>
         </div>
         <nav>
@@ -97,13 +99,10 @@ const Root = () => {
             </p>
           )}
         </nav>
-      </div>
-      <div
-        id="detail"
-        className={navigation.state === "loading" ? "loading" : ""}
-      >
+      </Style.Sidebar>
+      <Style.Detail className={navigation.state === "loading" ? "loading" : ""}>
         <Outlet />
-      </div>
+      </Style.Detail>
     </>
   );
 };

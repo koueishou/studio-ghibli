@@ -15,11 +15,11 @@ export const Column = styled.div`
 `;
 
 export const FilmContainer = styled.div`
-  max-width: 64rem;
+  max-width: 640px;
 
   & a[href*="twitter"] {
     display: flex;
-    font-size: 2.4rem;
+    font-size: 24px;
     color: #3992ff;
     text-decoration: none;
   }
@@ -31,40 +31,43 @@ export const FilmContainer = styled.div`
 export const FilmBanner = styled.img`
   display: block;
   width: 100%;
-  border-radius: 2.4rem;
+  border-radius: 24px;
   object-fit: cover;
-  box-shadow: 0px 0px 0.3rem 0.5rem #f2e1f2;
+  box-shadow: 0px 0px 3px 5px #f2e1f2;
 `;
 
 export const FavoriteForm = styled.div`
   & form {
     display: flex;
     align-items: center;
-    margin-top: 0.4rem;
-    & button {
-      box-shadow: none;
-      font-size: 2.4rem;
-      font-weight: 400;
-      padding: 0;
-      cursor: pointer;
-    }
-    & button[value="true"] {
-      color: #a4a4a4;
-    }
-    & button[value="true"]:hover,
-    & button[value="false"] {
-      color: #eeb004;
-    }
+    margin-top: 4px;
+  }
+`;
+
+export const FavoriteButton = styled.button`
+  border: none;
+  background-color: white;
+  color: #3992ff;
+  font-size: 24px;
+  font-weight: 400;
+  cursor: pointer;
+
+  &[value="true"] {
+    color: #a4a4a4;
+  }
+  &[value="true"]:hover,
+  &[value="false"] {
+    color: #eeb004;
   }
 `;
 
 export const Title = styled.h1`
   display: flex;
   align-items: flex-start;
-  gap: 1.6rem;
+  gap: 16px;
   text-align: center;
 
-  font-size: 3.2rem;
+  font-size: 32px;
   font-weight: 700;
   line-height: 1.2;
   & + p {
@@ -79,8 +82,8 @@ export const Title = styled.h1`
   }
   & ~ div {
     display: flex;
-    gap: 0.8rem;
-    margin: 1.6rem 0;
+    gap: 8px;
+    margin: 16px 0;
   }
 `;
 
@@ -90,9 +93,9 @@ export const Score = styled.div`
   align-items: center;
   background: orange;
   color: #fff;
-  width: 2.4rem;
-  height: 2.4rem;
-  box-shadow: 0px 0px 0.3rem 0.5rem orange;
+  width: 24px;
+  height: 24px;
+  box-shadow: 0px 0px 3px 5px orange;
 `;
 
 export const Description = styled.p`

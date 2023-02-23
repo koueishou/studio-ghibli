@@ -39,7 +39,7 @@ const Favorite = ({ film }) => {
   return (
     <Style.FavoriteForm>
       <fetcher.Form method="post">
-        <button
+        <Style.FavoriteButton
           type="submit"
           name="favorite"
           value={favorite === "true" ? "false" : "true"}
@@ -48,7 +48,7 @@ const Favorite = ({ film }) => {
           }
         >
           {favorite === "true" ? "★" : "☆"}
-        </button>
+        </Style.FavoriteButton>
       </fetcher.Form>
     </Style.FavoriteForm>
   );
@@ -64,14 +64,14 @@ const Film = () => {
       <Style.FilmBanner src={film.movie_banner} alt="film banner" />
       <Style.Row style={{ justifyContent: "space-between" }}>
         <Style.Column style={{ width: "100%" }}>
-          <Style.Row style={{ gap: "0.8rem" }}>
+          <Style.Row style={{ gap: "8px" }}>
             <Favorite film={film} />
             <Style.Title>{film.title}</Style.Title>
           </Style.Row>
           <Style.Row
             style={{
               width: "100%",
-              gap: "3.2rem",
+              gap: "32px",
             }}
           >
             <p>{film.release_date}</p>
