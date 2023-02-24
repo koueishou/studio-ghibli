@@ -12,4 +12,5 @@ module.exports = {
     "@/(.*)$": "<rootDir>/src/$1",
   },
   transformIgnorePatterns: ["!node_modules/"],
+  setupFilesAfterEnv: ["<rootDir>/setUpTests.js"],
 };

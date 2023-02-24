@@ -19,11 +19,13 @@ module.exports = {
     "comma-dangle": 0,
     "import/extensions": 0,
     "import/no-unresolved": 0,
+    "no-console": "off",
     // react
     "react/function-component-definition": [
       2,
       { namedComponents: "arrow-function" },
     ],
+    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
     // jest
     "jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
