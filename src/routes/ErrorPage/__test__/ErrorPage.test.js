@@ -5,17 +5,17 @@ import { createMemoryRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "../ErrorPage";
 
 // Mocking router it's own history stack in memory
-const mockRoutes = [
+const mockedRoutes = [
   {
     path: "/error-page",
     element: <ErrorPage />,
   },
 ];
-const mockRouter = createMemoryRouter(mockRoutes, {
+const mockedRouter = createMemoryRouter(mockedRoutes, {
   initialEntries: ["/", "/error-page"],
   initialIndex: 1,
 });
-const MockErrorPage = () => <RouterProvider router={mockRouter} />;
+const MockErrorPage = () => <RouterProvider router={mockedRouter} />;
 
 // Mocking console.error
 const original = console.error;
@@ -29,7 +29,7 @@ afterEach(() => {
   // console.error("now you can");
 });
 
-test("should ", () => {
+it("should render heading", () => {
   render(<MockErrorPage />);
   const headingElement = screen.getByText(/Oops/i);
   expect(headingElement).toBeInTheDocument();
