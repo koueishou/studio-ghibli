@@ -20,6 +20,7 @@ module.exports = {
     "import/extensions": 0,
     "import/no-unresolved": 0,
     "no-console": "off",
+    "global-require": "off",
     // react
     "react/function-component-definition": [
       2,
