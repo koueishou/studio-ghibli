@@ -4,7 +4,6 @@ const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "./src"), // 當前路徑 + 相對路徑 = 絕對路徑
-
   entry: {
     index: "./main", // 透過 Resolve 簡化 entry
   },
