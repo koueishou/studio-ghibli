@@ -29,8 +29,10 @@ afterEach(() => {
   // console.error("now you can");
 });
 
-it("should render heading", () => {
-  render(<MockErrorPage />);
-  const headingElement = screen.getByText(/Oops/i);
-  expect(headingElement).toBeInTheDocument();
+describe("ErrorPage", () => {
+  it("should render heading", () => {
+    render(<MockErrorPage />);
+    const headingElement = screen.getByText(/Oops/i);
+    expect(headingElement).toBeInTheDocument();
+  });
 });
