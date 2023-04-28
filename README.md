@@ -1,5 +1,7 @@
 # 🌰 Studio Ghibli
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/dd817a95-4b54-43e4-ab1b-585aa41d9a8d/deploy-status)](https://app.netlify.com/sites/studio-ghibli-dev/deploys)
+
 ## Webpack
 
 - Basics
