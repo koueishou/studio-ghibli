@@ -55,6 +55,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "Studio Ghibli",
+      favicon: "./favicon.ico",
       filename: "index.html",
       template: "./index.html",
       chunks: ["vendor", "index"], // JS 不用手動加在 HTML
