@@ -1,6 +1,9 @@
 {
   "git.ignoreLimitWarning": true,
-  "cSpell.words": ["Ghibli"],
+  "cSpell.words": [
+    "Ghibli",
+    "localforage"
+  ],
   "editor.formatOnSave": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.codeActionsOnSave": ["source.formatDocument", "source.fixAll.eslint"]

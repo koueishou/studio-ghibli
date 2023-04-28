@@ -51,7 +51,7 @@ describe("getFilm", () => {
 describe("updateFilm", () => {
   it("should update a film object for a valid id", async () => {
     const id = "2baf70d1-42bb-4437-b551-e5fed5a87abe";
-    const updates = { title: "New Title" };
+    const updates = { title: "天空の城" };
     const film = await updateFilm(id, updates);
     expect(film.title).toBe(updates.title);
   });
