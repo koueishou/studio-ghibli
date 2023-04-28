@@ -1,6 +1,5 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const ImageMinimizerPlugin = require("image-minimizer-webpack-plugin");
 
 module.exports = {
   context: path.resolve(__dirname, "./src"), // 當前路徑 + 相對路徑 = 絕對路徑
@@ -62,47 +61,6 @@ module.exports = {
     }),
   ],
   optimization: {
-    minimize: true,
-    minimizer: [
-      new ImageMinimizerPlugin({
-        deleteOriginalAssets: true,
-        minimizer: {
-          implementation: ImageMinimizerPlugin.imageminMinify,
-          options: {
-            // Lossless optimization with custom option
-            // Feel free to experiment with options for better result for you
-            plugins: [
-              "gifsicle",
-              "jpegtran",
-              ["optipng", { optimizationLevel: 5 }],
-              // Svgo configuration here https://github.com/svg/svgo#configuration
-              [
-                "svgo",
-                {
-                  plugins: [
-                    {
-                      name: "preset-default",
-                      params: {
-                        overrides: {
-                          removeViewBox: false,
-                          addAttributesToSVGElement: {
-                            params: {
-                              attributes: [
-                                { xmlns: "http://www.w3.org/2000/svg" },
-                              ],
-                            },
-                          },
-                        },
-                      },
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
-        },
-      }),
-    ],
     splitChunks: {
       // 把 node_modules 與自己的 entry 拆開來
       cacheGroups: {
