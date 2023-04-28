@@ -30,7 +30,7 @@ export const getFilms = async (query) => {
     let films = await localforage.getItem("films");
     if (!films || !films.length) {
       films = localGetFilms();
-      await setFilms();
+      await setFilms(films);
     }
     if (query) {
       films = matchSorter(films, query, { keys: ["title", "original_title"] });
